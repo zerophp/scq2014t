@@ -29,6 +29,8 @@ echo "<pre>";
 print_r($tabla);
 echo "</pre>";
 
+include ("pintar_matriz.php");
+pintar_matriz($tabla);
 
 
 
