@@ -1,6 +1,6 @@
 
 <?php 
-function tabla_de_multiplicar ($a, $b)
+function tabla_de_multiplicar ($a, $b=2)
 {	
 	for ($i=0;$i<=$b;$i++)
 	{	
@@ -21,14 +21,19 @@ function tabla_de_multiplicar ($a, $b)
 
 
 
-$a=5;
-$b=4;
+$operando1=5;
+$operando2=4;
 
-$tabla=tabla_de_multiplicar ($a, $b);
-echo "<pre>";
-print_r($tabla);
-echo "</pre>";
+$tabla=tabla_de_multiplicar ($operando1, $operando2);
+// echo "<pre>";
+// print_r($tabla);
+// echo "</pre>";
 
+include ("pintar_matriz.php");
+pintar_matriz($tabla);
+
+
+$tabla=tabla_de_multiplicar ($operando1, $operando2);
 include ("pintar_matriz.php");
 pintar_matriz($tabla);
 
