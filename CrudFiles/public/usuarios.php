@@ -10,6 +10,16 @@ else
 switch ($action)
 {
 	case 'update':
+		
+		if($_POST)
+		{
+			
+		}
+		else
+		{
+			// Leer datos de usuario
+			include('formulario.php');
+		}
 		echo "esto es update";
 	break;
 	
