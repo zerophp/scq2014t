@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* CSS Document */
+
+.strip-block {background:#2293a7;}
+a:hover{ color:#2293a7;}
+.top-bar{ border-top:3px #2293a7 solid;}
+.header {background-color:#2293a7;}
+.promo-slogan h1 span { color:#2293a7;}
+nav ul li a:hover{color: #2293a7;}
+nav ul li ul li:hover{color: #2293a7;border-top:none;}
+nav ul li a:hover, nav ul li.current > a{color: #2293a7;}
+nav ul li ul li a:hover{color: #2293a7;}
+.slider-home{background-color:#2293a7;}
+#nav li {background:#2293a7;border:1px #2293a7 solid;}
+.rslides_tabs .rslides_here a {height: 6px;}
+.rslides .caption { background: #2293a7;}
+.item-block .desc a:hover{ color:#2293a7;}
+ul#portfolio-filter li a.currents{ background:#2293a7;}
+.blog-meta .data h3{ color:#2293a7;}
+.post-format span{ background:#2293a7 url(../../img/post-format-sprite.png) 50% 40px no-repeat;}
+.blog-meta .post-format span{background:#2293a7 url(../../img/post-format-sprite.png) 50% 40px no-repeat;}
+.post-format.aside span { background-position: 50% 0;}
+.post-format.audio span{ background-position: 50% -40px;}
+.post-format.chat span{ background-position: 50% -80px;}
+.post-format.default span{ background-position: 50% -120px;}
+.post-format.gallery span{ background-position: 50% -160px;}
+.post-format.links span{ background-position: 50% -200px;}
+.post-format.quote span{ background-position: 50% -240px;}
+.post-format.status span{ background-position: 50% -280px;}
+.post-format.video span{ background-position: 50% -320px;}
+.post-format.image span{ background-position: 50% -360px;}
+#form .error-input {border:1px solid #2293a7;}
+.tweets ul li a{color:#2293a7;}
+.button{background: #2293a7;}
+.button.blue:hover { background: #2293a7;}
+.open-block-acc.active {background-color:#2293a7;}
+.open-block.active a { background-color:#2293a7;}
+.block-info .home-title{color:#2293a7;text-shadow:2px 2px 0 #e3e3e8; font-size:36px;}
