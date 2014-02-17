@@ -1,9 +1,2 @@
-1,Agustinsdasd,Calderon,agustincl@gmail.com,,123,gato|tigre,english|castellano,Descripcion,vigo,otros,Updated,Koala.jpg
-
-1,Agustin,Calderon,agustincl@gmail.com,1234,123,gato|tigre,english|castellano,Descripcion,vigo,otros,Enviar,Koala_1.jpg
-1,Agustin,Calderon,agustincl@gmail.com,1234,123,gato|tigre,english|castellano,Descripcion,vigo,otros,Enviar,Koala_2.jpg
-1,Agustin,Calderon,agustincl@gmail.com,1234,123,gato|tigre,english|castellano,Descripcion,vigo,otros,Enviar,Koala_3.jpg
-1,Agustin,Calderon,agustincl@gmail.com,1234,123,gato|tigre,english|castellano,Descripcion,vigo,otros,Enviar,Koala_4.jpg
-1,Agustin,Calderon,agustincl@gmail.com,1234,123,gato|tigre,english|castellano,Descripcion,vigo,otros,Enviar,Koala_5.jpg
-1,aaa,a,a,a,a,tigre,castellano,sdasda,santiago,otros,Enviar,Koala.jpg
-1,aaa,a,a,a,a,tigre,castellano,sdasda,santiago,otros,Enviar,Koala_1.jpg
+0,Agustina,Calderon,agustincl@gmail.com,,123,gato|tigre,english|castellano,Descripcion,vigo,otros,Updated,Koala.jpg
+1,Sebastian,Calderon,agustincl@gmail.com,,123,gato|tigre,english|castellano,Descripcion,vigo,otros,Updated,Koala_2.jpg

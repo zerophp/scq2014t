@@ -96,3 +96,34 @@ function getArrayFromText($textfile) {
 	$lines = explode("\n", file_get_contents($textfile));
 	return $lines;
 }
+
+/**
+ * Format user from data
+ * @param array $data
+ * @return array
+ */
+function formatUser($data)
+{
+	$usuario=array();
+	$usuario['id']=$data['id'];
+	$usuario['name']=$data['name'];
+	$usuario['lastname']=$data['lastname'];
+	$usuario['email']=$data['email'];
+	$usuario['password']=$data['password'];
+	$usuario['age']=$data['age'];
+	$usuario['pets']=$data['pets'];
+	$usuario['languages']=$data['languages'];
+	$usuario['description']=$data['description'];
+	$usuario['cities']=$data['cities'];
+	$usuario['gender']=$data['gender'];
+	$usuario[]='Updated';
+	$usuario['photo']=$data['photo'];
+	foreach($usuario as $value)
+	{
+		if(!is_array($value))
+			$array_out[]=$value;
+		else
+			$array_out[]=implode('|',$value);
+	}
+	return $array_out;
+}
