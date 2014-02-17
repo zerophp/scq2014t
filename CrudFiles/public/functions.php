@@ -53,19 +53,46 @@ function write2txt($filename, $data)
 			$array_out[]=implode('|',$value);
 	}
 	$data=implode(',',$array_out);
-	$data.="\n";
-	file_put_contents($filename, $data,FILE_APPEND);
-	return;	
+	$data.="\n";	
+	file_put_contents($filename, $data, FILE_APPEND);
 }
 
 /**
+ * 
  * Get users from file
- *
+ * 
  * @param string $filename
- * @param int:null $id 
- * @return array:string $usuario:
+ * @param int $id
+ * @return array:string $usuario
  */
-function getUserFromFile($filename, $id = null)
-{
-	
+function getUserFromFile($filename, $id) {
+	$lines = getArrayFromText($filename);
+	$line = $lines[$id];
+	$data = explode(",", $line);
+	$alumno = array('id' => $data[0],
+		'name' => $data[1],
+		'lastname' => $data[2],
+		'email' => $data[3],
+		'password' => $data[4],
+		'age' => $data[5],
+		'pets' => explode("|", $data[6]),
+		'languages' => explode("|", $data[7]),
+		'description' => $data[8],
+		'cities' => $data[9],
+		'gender' => $data[10],
+		'photo' => $data[12]
+	);
+	return $alumno;
+}
+
+/**
+ *
+ * Get an array with lines contained in a text file
+ *
+ * @param string $textfile
+ * @return array:string $lines
+ */
+function getArrayFromText($textfile) {
+	$lines = explode("\n", file_get_contents($textfile));
+	return $lines;
 }
