@@ -27,8 +27,11 @@ switch ($action)
 		}
 		else
 		{
-			$usuario=getUserFromFile($config['text_file'], $_GET['id']); 
-			include('../application/views/usuarios/insert.php');
+			$usuario=getUserFromFile($config['text_file'], $_GET['id']);
+			ob_start();
+				include('../application/views/usuarios/insert.php');
+				$content=ob_get_contents();
+			ob_end_clean();
 		}		
 	break;
 	
@@ -44,7 +47,10 @@ switch ($action)
 		}
 		else 
 		{
-			include('../application/views/usuarios/insert.php');
+			ob_start();
+				include('../application/views/usuarios/insert.php');
+				$content=ob_get_contents();
+			ob_end_clean();
 		}				
 	break;
 	
@@ -65,7 +71,10 @@ switch ($action)
 		else
 		{
 			$usuario=getUserFromFile($config['text_file'], $_GET['id']);
-			include('../application/views/usuarios/delete.php');
+			ob_start();
+				include('../application/views/usuarios/delete.php');
+				$content=ob_get_contents();
+			ob_end_clean();
 		}
 	break;
 	
@@ -74,10 +83,18 @@ switch ($action)
 		$data = file_get_contents($config['text_file']);
 		// Dividir el string por saltos de linea en un array
 		$filas = explode("\n",$data);
-		include ('../application/views/usuarios/select.php');		
+		ob_start();
+			include ('../application/views/usuarios/select.php');
+			$content=ob_get_contents();
+		ob_end_clean();		
 	break;
 	
 	default:
 	break;
 }
+
+
+include('../application/views/layouts/backend.phtml');
+
+
 

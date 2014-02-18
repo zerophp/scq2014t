@@ -1,5 +1,15 @@
+<h2 class="sub-header">Usuarios</h2>
 <a href="usuarios.php?action=insert">Insert Usuario</a>
-<table border=1>
+<table class="table table-striped">
+ <thead>
+                <tr>
+                  <th>id</th>
+                  <th>name</th>
+                  <th>Email</th>
+                  <th>Password</th>
+                  <th>Header</th>
+                </tr>
+              </thead>
 <?php foreach($filas as $key => $fila):	?>
 	<tr>
 		<?php 
