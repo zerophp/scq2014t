@@ -12,10 +12,10 @@
               </thead>
 <?php foreach($filas as $key => $fila):	?>
 	<tr>
-		<?php 
-		$columns=explode(',',$fila);
-		$image=array_pop($columns);
-		foreach($columns as $column):?>
+		<?php 		
+		$image=$fila['photo'];
+		unset($fila['photo']);
+		foreach($fila as $column):?>
 			<td><?=$column;?></td>
 		<?php endforeach; ?>
 		<td><img src="<?=$image;?>" width="100px" /></td>
