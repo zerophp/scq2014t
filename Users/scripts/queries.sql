@@ -1,5 +1,10 @@
 SELECT * FROM mydb.cities;
+
 SELECT * FROM cities;
+SELECT * FROm cities;
+select * FROM cities;
+
+
 SELECT * FROM cities WHERE idcity = 2;
 SELECT * FROM cities WHERE name LIKE 'Vigo';
 SELECT * FROM cities WHERE name LIKE '%o';
@@ -14,7 +19,9 @@ INSERT INTO users SET name = 'Agustin',
 					  email = 'agustincl@gmail.com';
 DELETE FROM cities WHERE idcity=4;					
 
-SELECT users.*, cities.name, genders.name
+SELECT users.name, 
+	cities.name as city, 
+	genders.name as gender
 FROM users
 INNER JOIN cities ON
 cities.idcity = users.cities_idcity
@@ -27,6 +34,23 @@ LEFT OUTER JOIN users_has_pets ON
 users.iduser = users_has_pets.users_iduser
 RIGHT JOIN pets ON
 users_has_pets.pets_idpet = pets.idpet;
+
+
+SELECT users.name, 
+	cities.name as city
+FROM users
+RIGHT OUTER JOIN cities ON
+cities.idcity = users.cities_idcity;
+
+
+SELECT users.name, 
+GROUP_CONCAT(pets.name SEPARATOR '|') as pets
+FROM users
+INNER JOIN users_has_pets ON
+users_has_pets.users_iduser = users.iduser
+INNER JOIN pets ON
+pets.idpet = users_has_pets.pets_idpet
+WHERE users.iduser=1;
 
 
 
