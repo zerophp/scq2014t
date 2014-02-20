@@ -59,19 +59,15 @@ switch ($action)
 		if($_POST)
 		{
 			if($_POST['Borrar']=="Si")
-			{
-				$alumnos=file_get_contents($config['text_file']);
-				$alumnos=explode("\n",$alumnos);
-				unset($alumnos[$_POST['id']]);
-				$alumnos=implode("\n",$alumnos);
-				file_put_contents($config['text_file'], $alumnos);
+			{	
+				deleteUser($_POST['id'], $config['database']);
 				// TODO: remove image				
 			}
-			header("Location: /usuarios.php");
+			header("Location: /users.php");
 		}
 		else
 		{
-			$usuario=getUserFromFile($config['text_file'], $_GET['id']);
+			$usuario = getUser($_GET['id'], $config['database']);
 			ob_start();
 				include('../application/views/usuarios/delete.php');
 				$content=ob_get_contents();

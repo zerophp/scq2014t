@@ -23,8 +23,8 @@
 		<td><img src="<?=$image;?>" width="100px" /></td>
 		
 		<td>
-			<a href="usuarios.php?action=update&id=<?=$key;?>">Update</a>
-			<a href="usuarios.php?action=delete&id=<?=$key;?>">Delete</a>
+			<a href="?action=update&id=<?=$fila['iduser'];?>">Update</a>
+			<a href="?action=delete&id=<?=$fila['iduser'];?>">Delete</a>
 		</td>
 	</tr>
 <?php endforeach;?>

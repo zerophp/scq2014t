@@ -91,3 +91,38 @@ function selectDb($link, $config)
 	return;
 }
 
+function getUser($iduser, $config)
+{
+	$link = connect($config);
+	selectDb($link, $config);
+	
+	$sql = "SELECT users.iduser,users.name, users.photo,
+					cities.name as city,
+					genders.name as gender
+			FROM users
+			INNER JOIN cities ON
+				cities.idcity = users.cities_idcity
+			INNER JOIN genders ON
+				genders.idgender = users.genders_idgender
+			WHERE users.iduser = ".$iduser;
+	$result = mysqli_query($link, $sql);
+	while($row = mysqli_fetch_assoc($result))
+	{
+		$row['pets'] = getPets($row['iduser'], $config);
+		$row['languages'] =	getLanguages($row['iduser'], $config);
+		$rows[]=$row;
+	}
+		
+	return $rows[0];
+}
+
+
+function deleteUser($iduser, $config)
+{
+	$link = connect($config);
+	selectDb($link, $config);	
+	$sql = "DELETE FROM users WHERE iduser = ".$iduser;
+	$result = mysqli_query($link, $sql);
+	
+	return $result;
+}
