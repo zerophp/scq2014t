@@ -3,11 +3,13 @@
 <table class="table table-striped">
  <thead>
                 <tr>
-                  <th>id</th>
-                  <th>name</th>
-                  <th>Email</th>
-                  <th>Password</th>
-                  <th>Header</th>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>City</th>
+                  <th>Gender</th>
+                  <th>Pets</th>
+                  <th>Languages</th>                  
+                  <th>Photo</th>
                 </tr>
               </thead>
 <?php foreach($filas as $key => $fila):	?>

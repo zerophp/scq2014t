@@ -53,7 +53,14 @@ pets.idpet = users_has_pets.pets_idpet
 WHERE users.iduser=1;
 
 
-
+SELECT users.name, 
+GROUP_CONCAT(languages.name SEPARATOR '|') as languages
+FROM users
+INNER JOIN users_has_languages ON
+users_has_languages.users_iduser = users.iduser
+INNER JOIN languages ON
+languages.idlanguage = users_has_languages.languages_idlanguage
+WHERE users.iduser=1;
 
 
 

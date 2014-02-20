@@ -1,6 +1,7 @@
 <?php 
 
 include('../application/model/functions.php');
+include('../application/model/users.php');
 
 $config=parse_ini_file('../application/configs/settings.ini', true);
 
@@ -79,20 +80,6 @@ switch ($action)
 	break;
 	
 	case 'select':
-		// Conectarme al DBMS
-		$link = mysqli_connect($config['database']['host'], 
-						$config['database']['user'], 
-						$config['database']['password'] 
-						);
-		// Seleccionar la DB
-		mysqli_select_db($link, $config['database']['db'] );
-		
-		// Hacer la consulta 
-		$sql = "SELECT * FROM users";
-		$result = mysqli_query($link, $sql);
-		while($row = mysqli_fetch_assoc($result))
-			$rows[]=$row;
-		
 		$filas = getUsers($config['database']);
 		ob_start();
 			include ('../application/views/usuarios/select.php');
