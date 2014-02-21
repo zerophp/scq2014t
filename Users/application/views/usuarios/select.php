@@ -1,5 +1,5 @@
 <h2 class="sub-header">Usuarios</h2>
-<a href="usuarios.php?action=insert">Insert Usuario</a>
+<a href="?action=insert">Insert Usuario</a>
 <table class="table table-striped">
  <thead>
                 <tr>

@@ -16,19 +16,13 @@ switch ($action)
 	case 'update':	
 		if($_POST)
 		{
-			// Dar formato al array post como una linea valida
-			$array_out=formatUser($_POST);						
-			$alumnos=file_get_contents($config['text_file']);
-			$alumnos=explode("\n",$alumnos);
-			$alumnos[$_POST['id']]=implode(',',$array_out);
-			$alumnos=implode("\n",$alumnos);
-			file_put_contents($config['text_file'], $alumnos);			
-			header("Location: /usuarios.php");
+			update('users', $_POST, $config['database']);		
+			header("Location: /users.php");
 			// TODO: change image
 		}
 		else
-		{
-			$usuario=getUserFromFile($config['text_file'], $_GET['id']);
+		{			
+			$usuario = getUser($_GET['id'], $config['database']);
 			ob_start();
 				include('../application/views/usuarios/insert.php');
 				$content=ob_get_contents();
@@ -41,10 +35,10 @@ switch ($action)
 		{
 			$filename=getFileName($_SERVER['DOCUMENT_ROOT'], $_FILES['photo']['name']);
 			uploadImage($filename, $_SERVER['DOCUMENT_ROOT'], $_FILES['photo']);
-			$_POST[]=$filename;
-			write2txt($config['text_file'], $_POST);			
-			//Saltar a tabla de usuarios
-			header("Location: /usuarios.php");
+			if(isset($filename))
+				$_POST['photo']=$filename;			
+			insert('users', $_POST, $config['database']);			
+			header("Location: /users.php");
 		}
 		else 
 		{
@@ -60,7 +54,7 @@ switch ($action)
 		{
 			if($_POST['Borrar']=="Si")
 			{	
-				deleteUser($_POST['id'], $config['database']);
+				deleteUser($_POST['iduser'], $config['database']);
 				// TODO: remove image				
 			}
 			header("Location: /users.php");

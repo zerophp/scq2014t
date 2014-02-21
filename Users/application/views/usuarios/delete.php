@@ -2,7 +2,7 @@
 	  enctype="multipart/form-data">
 <ul>
 <li>
-Id: <input type="hidden" name="id" value="<?=$_GET['id'];?>"/>
+Id: <input type="hidden" name="iduser" value="<?=$_GET['id'];?>"/>
 </li>
 <li>
 Name: <?=isset($usuario['name'])?$usuario['name']:'';?>

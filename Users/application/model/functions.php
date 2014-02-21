@@ -9,6 +9,8 @@
  */
 function getFileName($path, $name)
 {
+	if(!isset($name)||$name=='')
+		return null;
 	$datafichero=pathinfo($path."/".$name);
 	$i=0;
 	while (file_exists($path."/".$name))
