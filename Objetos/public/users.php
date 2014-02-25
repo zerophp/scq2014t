@@ -1,7 +1,10 @@
 <?php 
 
 include('../application/model/functions.php');
-include('../application/model/users.php');
+include('../application/autoload.php');
+
+// include('../application/model/users/users.php');
+
 
 $config=parse_ini_file('../application/configs/settings.ini', true);
 
@@ -16,7 +19,7 @@ switch ($action)
 	case 'update':	
 		if($_POST)
 		{
-			update('users', $_POST, $config['database']);		
+			update('users', $_POST);		
 			header("Location: /users.php");
 			// TODO: change image
 		}
@@ -70,7 +73,7 @@ switch ($action)
 	break;
 	
 	case 'select':
-		$obj = new users($config['database']);
+		$obj = new model_users_users($config);
 		$filas = $obj->getUsers();
 		ob_start();
 			include ('../application/views/usuarios/select.php');

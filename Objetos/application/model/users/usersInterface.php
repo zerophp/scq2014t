@@ -1,11 +1,11 @@
 <?php
 
 
-interface model_usersInterface
+interface model_users_usersInterface
 {		
-	function getUsers($config);	
-	function getUser($iduser, $config);
-	function deleteUser($iduser, $config);
-	function updateUser($iduser, $data, $config);
+	function getUsers();	
+	function getUser($iduser);
+	function deleteUser($iduser);
+	function updateUser($iduser, $data);
 }
 

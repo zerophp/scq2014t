@@ -1,14 +1,15 @@
 <?php
 
 
-class model_users_users implements model_usersInterface
+class model_users_users implements model_users_usersInterface
 {
 	var $mapper;
 	
 	public function __construct($config)
 	{
-		$txt = $config['repository'].'Mapper';
-		$mapper = new $txt();
+
+		$txt = 'model_users_mapper_'.$config['repository']['users'].'_users';
+		$mapper = new $txt($config['database']);
 		$this->mapper = $mapper;
 	}
 	
@@ -17,25 +18,25 @@ class model_users_users implements model_usersInterface
 	 * @param array $config
 	 * @return array
 	 */
-	function getUsers($config)
+	function getUsers()
 	{
-		return $this->mapper->getUsers($config);		
+		return $this->mapper->getUsers();		
 	}
 	
 	
-	function getUser($iduser, $config)
+	function getUser($iduser)
 	{
-		return $this->mapper->getUser($iduser, $config);
+		return $this->mapper->getUser($iduser);
 	}
 	
 	
-	function deleteUser($iduser, $config)
+	function deleteUser($iduser)
 	{
-		return $this->mapper->deleteUser($iduser, $config);
+		return $this->mapper->deleteUser($iduser);
 	}
 		
-	function updateUser($iduser, $data, $config)
+	function updateUser($iduser, $data)
 	{
-		return $this->mapper->updateUser($iduser, $data, $config);
+		return $this->mapper->updateUser($iduser, $data);
 	}
 }

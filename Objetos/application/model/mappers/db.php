@@ -2,19 +2,31 @@
 
 class model_mappers_db
 {
+	var $link;
+	var $config;
+	
+	
+	function __construct($config)
+	{
+		$this->config = $config;
+		$this->link = $this->connect();
+	}
+	
 	
 	/**
 	 * Get DBMS link conection
 	 * @param unknown $config
 	 * @return link
 	 */
-	function connect($config)
+	function connect()
 	{
-		$link = mysqli_connect($config['host'],
-				$config['user'],
-				$config['password']
+		$this->link = mysqli_connect($this->config['host'],
+				$this->config['user'],
+				$this->config['password']
 		);
-		return $link;
+		
+		$this->selectDb($this->link);
+		return $this->link;
 	}
 	
 	
@@ -23,16 +35,16 @@ class model_mappers_db
 	 * @param unknown $config
 	 * @return null
 	 */
-	function selectDb($link, $config)
+	function selectDb($link)
 	{
-		mysqli_select_db($link, $config['db'] );
-		mysqli_query($link, 'SET NAMES utf8');
+		mysqli_select_db($this->link, $this->config['db'] );
+		mysqli_query($this->link, 'SET NAMES utf8');
 		return;
 	}
 	
-	function insert($tablename, $data, $config)
+	function insert($tablename, $data)
 	{
-		$fields = getFields($tablename, $data, $config);
+		$fields = $this->getFields($tablename, $data);
 		$sql = "INSERT INTO ".$tablename." SET ";
 		foreach ($fields[1] as $key => $value)
 		{
@@ -40,15 +52,13 @@ class model_mappers_db
 		}
 		$sql = substr($sql, 0, strlen($sql)-1);
 	
-		$link = connect($config);
-		selectDb($link, $config);
-		$result = mysqli_query($link, $sql);
+		$result = mysqli_query($this->link, $sql);
 		return $result;
 	}
 	
-	function update($tablename, $data, $config)
+	function update($tablename, $data)
 	{
-		$fields = getFields($tablename, $data, $config);
+		$fields = $this->getFields($tablename, $data);
 		$sql = "UPDATE ".$tablename." SET ";
 		foreach ($fields[1] as $key => $value)
 		{
@@ -62,18 +72,15 @@ class model_mappers_db
 		}
 		$sql = substr($sql, 0, strlen($sql)-4);
 	
-		$link = connect($config);
-		selectDb($link, $config);
-		$result = mysqli_query($link, $sql);
+		$result = mysqli_query($this->link, $sql);
 		return $result;
 	}
 	
-	function getFields($tablename, $data, $config)
+	function getFields($tablename, $data)
 	{
 		$sql = "DESCRIBE ".$tablename;
-		$link = connect($config);
-		selectDb($link, $config);
-		$result = mysqli_query($link, $sql);
+		
+		$result = mysqli_query($this->link, $sql);
 		while($row = mysqli_fetch_assoc($result))
 		{
 			if($row['Key']!=='PRI')

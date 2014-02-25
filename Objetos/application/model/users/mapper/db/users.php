@@ -3,11 +3,14 @@
 
 class model_users_mapper_db_users extends model_mappers_db
 {
-	function getUsers($config)
+	function __construct($config)
 	{
-		$link = $this->mapper->connect($config);
-		$this->mapper->selectDb($link, $config);
+		parent::__construct($config);
+	}
 	
+	
+	function getUsers()
+	{
 		$sql = "SELECT users.iduser,users.name, users.photo,
 						cities.name as city,
 						genders.name as gender
@@ -16,22 +19,19 @@ class model_users_mapper_db_users extends model_mappers_db
 					cities.idcity = users.cities_idcity
 				INNER JOIN genders ON
 					genders.idgender = users.genders_idgender";
-		$result = mysqli_query($link, $sql);
+		$result = mysqli_query($this->link, $sql);
 		while($row = mysqli_fetch_assoc($result))
 		{
-			$row['pets'] = getPets($row['iduser'], $config);
-			$row['languages'] =	getLanguages($row['iduser'], $config);
+			$row['pets'] = $this->getPets($row['iduser']);
+			$row['languages'] =	$this->getLanguages($row['iduser']);
 			$rows[]=$row;
 		}
 		return $rows;
 	}
 	
 	
-	function getPets($iduser,$config)
+	function getPets($iduser)
 	{
-		$link = connect($config);
-		selectDb($link, $config);
-	
 		$sql = "SELECT users.name,
 				GROUP_CONCAT(pets.name SEPARATOR '|') as pets
 				FROM users
@@ -40,16 +40,13 @@ class model_users_mapper_db_users extends model_mappers_db
 				INNER JOIN pets ON
 				pets.idpet = users_has_pets.pets_idpet
 				WHERE users.iduser=".$iduser;
-		$result = mysqli_query($link, $sql);
+		$result = mysqli_query($this->link, $sql);
 		$row = mysqli_fetch_assoc($result);
 		return $row['pets'];
 	}
 	
-	function getLanguages($iduser,$config)
+	function getLanguages($iduser)
 	{
-		$link = connect($config);
-		selectDb($link, $config);
-	
 		$sql = "SELECT users.name,
 				GROUP_CONCAT(languages.name SEPARATOR '|') as languages
 				FROM users
@@ -58,7 +55,7 @@ class model_users_mapper_db_users extends model_mappers_db
 				INNER JOIN languages ON
 					languages.idlanguage = users_has_languages.languages_idlanguage
 				WHERE users.iduser=".$iduser;
-		$result = mysqli_query($link, $sql);
+		$result = mysqli_query($this->link, $sql);
 		$row = mysqli_fetch_assoc($result);
 		return $row['languages'];
 	}
@@ -67,11 +64,8 @@ class model_users_mapper_db_users extends model_mappers_db
 	
 	
 	
-	function getUser($iduser, $config)
+	function getUser($iduser)
 	{
-		$link = connect($config);
-		selectDb($link, $config);
-	
 		$sql = "SELECT users.*,
 						cities.name as city,
 						genders.name as gender
@@ -81,11 +75,11 @@ class model_users_mapper_db_users extends model_mappers_db
 				INNER JOIN genders ON
 					genders.idgender = users.genders_idgender
 				WHERE users.iduser = ".$iduser;
-		$result = mysqli_query($link, $sql);
+		$result = mysqli_query($this->link, $sql);
 		while($row = mysqli_fetch_assoc($result))
 		{
-			$row['pets'] = explode('|',getPets($row['iduser'], $config));
-			$row['languages'] =	explode('|',getLanguages($row['iduser'], $config));
+			$row['pets'] = explode('|',$this->getPets($row['iduser']));
+			$row['languages'] =	explode('|',$this->getLanguages($row['iduser']));
 			$rows[]=$row;
 		}
 			
@@ -93,40 +87,18 @@ class model_users_mapper_db_users extends model_mappers_db
 	}
 	
 	
-	function deleteUser($iduser, $config)
+	function deleteUser($iduser)
 	{
-		$link = connect($config);
-		selectDb($link, $config);
 		$sql = "DELETE FROM users WHERE iduser = ".$iduser;
-		$result = mysqli_query($link, $sql);
+		$result = mysqli_query($this->link, $sql);
 	
 		return $result;
 	}
 	
 	
 	
-	function updateUser($iduser, $data, $config)
+	function updateUser($tablename, $data)
 	{
-		echo "<pre>";
-		print_r($data);
-		echo "</pre>";
-	
-		$link = connect($config);
-		selectDb($link, $config);
-	
-		$sql = "UPDATE users SET ";
-		foreach ($data as $key => $value)
-		{
-			$sql.=$key . "='".$value."',";
-		}
-		$sql.= "WHERE iduser =".$iduser;
-		echo $sql;
-	
-		die;
-	
-			
-		$result = mysqli_query($link, $sql);
-	
-		return $result;
+		$this->update($tablename, $data);
 	}
 }
