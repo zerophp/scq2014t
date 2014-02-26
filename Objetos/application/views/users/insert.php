@@ -1,3 +1,7 @@
+<?php 
+if(isset($data['usuario']))
+	$usuario = $data['usuario'];
+?>
 <form method="post" 
 	  enctype="multipart/form-data">
 <ul>

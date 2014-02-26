@@ -1,5 +1,10 @@
+<?php 
+if(isset($data['filas']))
+	$filas = $data['filas'];
+?>
+
 <h2 class="sub-header">Usuarios</h2>
-<a href="?action=insert">Insert Usuario</a>
+<a href="/users/insert">Insert Usuario</a>
 <table class="table table-striped">
  <thead>
                 <tr>
@@ -23,8 +28,8 @@
 		<td><img src="<?=$image;?>" width="100px" /></td>
 		
 		<td>
-			<a href="?action=update&id=<?=$fila['iduser'];?>">Update</a>
-			<a href="?action=delete&id=<?=$fila['iduser'];?>">Delete</a>
+			<a href="/users/update/id/<?=$fila['iduser'];?>">Update</a>
+			<a href="/users/delete/id/<?=$fila['iduser'];?>">Delete</a>
 		</td>
 	</tr>
 <?php endforeach;?>
