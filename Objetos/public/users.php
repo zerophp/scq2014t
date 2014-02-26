@@ -19,13 +19,15 @@ switch ($action)
 	case 'update':	
 		if($_POST)
 		{
-			update('users', $_POST);		
+			$obj = new model_users_users($config);
+			$obj->updateUser('users', $_POST);		
 			header("Location: /users.php");
 			// TODO: change image
 		}
 		else
 		{			
-			$usuario = getUser($_GET['id'], $config['database']);
+			$obj = new model_users_users($config);
+			$usuario = $obj->getUser($_GET['id']);
 			ob_start();
 				include('../application/views/usuarios/insert.php');
 				$content=ob_get_contents();
@@ -39,8 +41,9 @@ switch ($action)
 			$filename=getFileName($_SERVER['DOCUMENT_ROOT'], $_FILES['photo']['name']);
 			uploadImage($filename, $_SERVER['DOCUMENT_ROOT'], $_FILES['photo']);
 			if(isset($filename))
-				$_POST['photo']=$filename;			
-			insert('users', $_POST, $config['database']);			
+				$_POST['photo']=$filename;	
+			$obj = new model_users_users($config);
+			$obj->insertUser('users', $_POST);			
 			header("Location: /users.php");
 		}
 		else 
@@ -57,14 +60,16 @@ switch ($action)
 		{
 			if($_POST['Borrar']=="Si")
 			{	
-				deleteUser($_POST['iduser'], $config['database']);
+				$obj = new model_users_users($config);
+				$obj->deleteUser($_POST['iduser'], $config['database']);
 				// TODO: remove image				
 			}
 			header("Location: /users.php");
 		}
 		else
 		{
-			$usuario = getUser($_GET['id'], $config['database']);
+			$obj = new model_users_users($config);
+			$usuario = $obj->getUser($_GET['id']);
 			ob_start();
 				include('../application/views/usuarios/delete.php');
 				$content=ob_get_contents();

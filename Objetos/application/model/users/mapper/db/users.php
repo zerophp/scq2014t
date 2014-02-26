@@ -101,4 +101,9 @@ class model_users_mapper_db_users extends model_mappers_db
 	{
 		$this->update($tablename, $data);
 	}
+	
+	function insertUser($tablename, $data)
+	{
+		$this->insert($tablename, $data);
+	}
 }

@@ -35,8 +35,13 @@ class model_users_users implements model_users_usersInterface
 		return $this->mapper->deleteUser($iduser);
 	}
 		
-	function updateUser($iduser, $data)
+	function updateUser($tablename, $data)
 	{
-		return $this->mapper->updateUser($iduser, $data);
+		return $this->mapper->updateUser($tablename, $data);
+	}
+	
+	function insertUser($tablename, $data)
+	{
+		return $this->mapper->insertUser($tablename, $data);
 	}
 }
