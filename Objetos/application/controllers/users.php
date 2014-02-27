@@ -1,7 +1,7 @@
 <?php 
 
 
-class controllers_users extends controllers_frontcontroller
+class controllers_users extends frontview
 {
 	public function insert()
 	{

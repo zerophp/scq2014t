@@ -86,6 +86,38 @@ class model_users_mapper_db_users extends model_mappers_db
 		return $rows[0];
 	}
 	
+	function getAcl($iduser, $request)
+	{
+		$sql = "SELECT acl.*
+				FROM acl
+				WHERE acl.users_iduser = '".$iduser."' AND
+					  acl.controller = '".$request['controller']."' AND
+					  acl.action = '".$request['action']."'";
+	
+		$result = mysqli_query($this->link, $sql);
+		while($row = mysqli_fetch_assoc($result))
+		{
+			$rows[]=$row;
+		}
+			
+		return $rows[0];
+	}
+	
+	function getCredential($email, $password)
+	{
+		$sql = "SELECT users.*
+				FROM users
+				WHERE users.email = '".$email."' AND
+					  users.password = '".$password."'";
+		
+		$result = mysqli_query($this->link, $sql);
+		while($row = mysqli_fetch_assoc($result))
+		{
+			$rows[]=$row;
+		}
+			
+		return $rows[0];
+	}
 	
 	function deleteUser($iduser)
 	{

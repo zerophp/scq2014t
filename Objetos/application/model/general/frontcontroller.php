@@ -24,7 +24,7 @@ class model_general_frontcontroller
 		else 
 		{
 			$request['controller']='error';
-			$request['action']='404';
+			$request['action']='_404';
 		}
 		
 		for ($i=3;$i<count($data);$i+=2)

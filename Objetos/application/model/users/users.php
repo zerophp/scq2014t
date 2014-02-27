@@ -34,6 +34,16 @@ class model_users_users implements model_users_usersInterface
 	{
 		return $this->mapper->deleteUser($iduser);
 	}
+	
+	function getCredential($email, $password)
+	{
+		return $this->mapper->getCredential($email, $password);
+	}
+	
+	function getAcl($iduser, $request)
+	{
+		return $this->mapper->getAcl($iduser, $request);
+	}
 		
 	function updateUser($tablename, $data)
 	{

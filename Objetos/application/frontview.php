@@ -1,7 +1,7 @@
 <?php
 
 
-class controllers_frontcontroller
+class frontview
 {
 	var $config;
 	var $request;
