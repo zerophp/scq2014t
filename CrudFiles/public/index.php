@@ -1,3 +1,57 @@
+<form action="https://cntg.xunta.es:443/web/cnt/iniciar?p_p_id=58&amp;p_p_action=1&amp;p_p_state=normal&amp;p_p_mode=view&amp;p_p_col_id=column-1&amp;p_p_col_count=1&amp;_58_struts_action=%2Flogin%2Fview&amp;_58_cmd=update" method="post" name="_58_fm">
+<input name="save_last_path" type="hidden" value="0">
+<input name="_58_rememberMe" type="hidden" value="false">
+<input name="_58_redirect" type="hidden" value="">
+<table class="lfr-table">
+<tbody><tr>
+<td>
+Acceso
+</td>
+<td>
+<input name="_58_login" style="width: 120px;" type="text" value="@oteucorreo.com">
+</td>
+</tr>
+<tr>
+<td>
+Contrasinal
+</td>
+<td>
+<input id="_58_password" name="_58_password" style="width: 120px;" type="password" value="">
+<span id="_58_passwordCapsLockSpan" style="display: none;">O bloqueo de maiúsculas está habilitado.</span>
+</td>
+</tr>
+<tr>
+<td>
+<span style="font-size: xx-small;">
+Recórdame
+</span>
+</td>
+<td>
+<input type="checkbox" onclick="
+if (this.checked) {
+document._58_fm._58_rememberMe.value = 'on';
+}
+else {
+document._58_fm._58_rememberMe.value = 'off';
+}">
+</td>
+</tr>
+</tbody></table>
+<br>
+<input type="submit" value="Acceder">
+<input type="button" value="Crear conta" onclick="self.location = 'https://cntg.xunta.es:443/web/cnt/iniciar?p_p_id=2&amp;p_p_action=1&amp;p_p_state=maximized&amp;p_p_mode=view&amp;p_p_col_id=column-1&amp;p_p_col_count=1&amp;_2_struts_action=%2Fmy_account%2Fcreate_account';">
+<br><br>
+<a href="/c/portal/login?tabs1=forgot-password" style="font-size: xx-small;">
+¿Olvidou o seu contrasinal?
+</a>
+</form>
+ <?php 
+
+
+die;
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
